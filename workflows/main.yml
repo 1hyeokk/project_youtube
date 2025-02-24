@@ -1,4 +1,0 @@
-name: API_KEY
-
-env:
-  OPENYOUTUBE_API_KEY: ${{ secrets.OPENYOUTUBE_API_KEY }}
