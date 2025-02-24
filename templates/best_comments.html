@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} 베스트 댓글</title>
+    <link rel="icon" type="image/png" href="static/logo.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+        .summary-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .video-link {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #ff0000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .video-link:hover {
+            text-decoration: underline;
+        }
+        .comment {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .comment-author {
+            font-weight: bold;
+            color: black;
+        }
+        .comment-text {
+            font-size: 14px;
+            color: #444;
+        }
+        .comment-likes {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ff6600;
+            margin-top: 5px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-button:hover {
+            background: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> {{ title }} 베스트 댓글 </h1>
+
+    <div class="summary-container">
+        <a href="{{ url }}" target="_blank" class="video-link">▶ 영상 바로가기</a>
+
+        <h2>💬 베스트 댓글</h2>
+
+        {% if comments %}
+            {% for comment in comments %}
+                <div class="comment">
+                    <p class="comment-author">{{ comment.author }}</p>
+                    <p class="comment-text">{{ comment.text|safe }}</p>
+                    <p class="comment-likes">👍 좋아요: {{ comment.likes }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>📝 베스트 댓글이 없습니다.</p>
+        {% endif %}
+
+        <a href="/" class="back-button">🏠 메인 페이지로 돌아가기</a>
+    </div>
+
+</body>
+</html>
