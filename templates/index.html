@@ -91,10 +91,32 @@
                 <option value="15to30" {% if selected_filter == "15to30" %}selected{% endif %}>15분 ~ 30분</option>
                 <option value="over30" {% if selected_filter == "over30" %}selected{% endif %}>30분 초과</option>
             </select>
+
+            <label for="category">카테고리:</label>
+            <select name="category" id="category" onchange="this.form.submit()">
+                <option value="all" {% if selected_category_filter == "all" or not selected_category_filter %}selected{% endif %}>전체</option>
+                <option value="Film & Animation" {% if selected_category_filter == "Film & Animation" %}selected{% endif %}>애니메이션</option>
+                <option value="Autos & Vehicles" {% if selected_category_filter == "Autos & Vehicles" %}selected{% endif %}>모빌리티</option>
+                <option value="Music" {% if selected_category_filter == "Music" %}selected{% endif %}>음악</option>
+                <option value="Pets & Animals" {% if selected_category_filter == "Pets & Animals" %}selected{% endif %}>동물</option>
+                <option value="Sports" {% if selected_category_filter == "Sports" %}selected{% endif %}>스포츠</option>
+                <option value="Travel & Events" {% if selected_category_filter == "Travel & Events" %}selected{% endif %}>여행</option>
+                <option value="Gaming" {% if selected_category_filter == "Gaming" %}selected{% endif %}>게임</option>
+                <option value="People & Blogs" {% if selected_category_filter == "People & Blogs" %}selected{% endif %}>브이로그</option>
+                <option value="Comedy" {% if selected_category_filter == "Comedy" %}selected{% endif %}>예능</option>
+                <option value="Entertainment" {% if selected_category_filter == "Entertainment" %}selected{% endif %}>문화 콘텐츠</option>
+                <option value="News & Politics" {% if selected_category_filter == "News & Politics" %}selected{% endif %}>뉴스 & 정치</option>
+                <option value="Howto & Style" {% if selected_category_filter == "Howto & Style" %}selected{% endif %}> 생활 노하우 & 스타일</option>
+                <option value="Education" {% if selected_category_filter == "Education" %}selected{% endif %}>교육</option>
+                <option value="Science & Technology" {% if selected_category_filter == "Science & Technology" %}selected{% endif %}>과학 & 기술</option>
+                <option value="Movies" {% if selected_category_filter == "Movies" %}selected{% endif %}>영화</option>
+                <option value="Documentary" {% if selected_category_filter == "Documentary" %}selected{% endif %}>다큐멘터리</option>
+                <option value="Sci-Fi/Fantasy" {% if selected_category_filter == "Sci-Fi/Fantasy" %}selected{% endif %}>SF/판타지</option>
+                <option value="Shows" {% if selected_category_filter == "Shows" %}selected{% endif %}>쇼</option>
+            </select>
         </form>
     </div>
 
-    
     <div class="separator"></div>
 
     <div class="video-container" id="videoList">
