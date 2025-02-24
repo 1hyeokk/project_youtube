@@ -28,15 +28,21 @@ def conver_time(duration):
         return parts[0] * 3600 + parts[1] * 60 + parts[2]
     return parts[0] * 60 + parts[1]
 
+
 @app.route("/")
 def home():
     scraped_time = fetch_videos().get("scraped_time")
-    hour = scraped_time.split(" ")[1].split(":")[0]
+    month1 = scraped_time.split(" ")[0].split("-")[1]
+    day1 = scraped_time.split(" ")[0].split("-")[2]
+    hour1 = scraped_time.split(" ")[1].split(":")[0]
 
     duration_filter = request.args.get("duration", "")
+    category_filter = request.args.get("category", "all")
 
-    # 필터링 적용
+
+    # 시간필터 적용 15분 미만, 15분~30분, 30분 초과
     filtered_videos = []
+
     for video in videos:
         vs = conver_time(video["duration"])
 
@@ -48,9 +54,19 @@ def home():
             filtered_videos.append(video)
         if not duration_filter:
             filtered_videos = videos
-    return render_template("index.html", videos=filtered_videos, selected_filter=duration_filter, scraped_time = hour)
 
 
+        if category_filter and category_filter != "all":
+            filtered_videos = [video for video in filtered_videos if video.get("category") == category_filter]
+    
+    # index.html 템플릿을 렌더링하고 특정 데이터를 템플릿으로 전달달
+    return render_template("index.html", 
+                           videos=filtered_videos, 
+                           selected_filter=duration_filter, 
+                           selected_category_filter=category_filter,
+                           month1 = month1, 
+                           day1 = day1,
+                           hour1 = hour1)
 
 API_KEY = os.getenv("OPENYOUTUBE_API_KEY")
 CACHE = {}  # 캐싱된 댓글 저장
