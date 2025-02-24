@@ -104,13 +104,14 @@ def best_comments():
 
     # YouTube API에서 베스트 댓글 가져오기
     comments = get_best_comments(video_id)
-
+    video= next((video for video in videos if video["video_id"] == video_id), None)
     return render_template(
         "best_comments.html",
         title=video_title,
         url=f"https://www.youtube.com/watch?v={video_id}",
-        comments=comments
+        comments=comments,
+        video=video
     )
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run("0.0.0.0")
