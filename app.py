@@ -49,7 +49,7 @@ def home():
 
 
 
-API_KEY = "AIzaSyDZEXwvA4NHFHak9LJKrocMn53HpbNPNPQ"
+API_KEY = os.getenv("OPENYOUTUBE_API_KEY")
 CACHE = {}  # 캐싱된 댓글 저장
 CACHE_EXPIRY = 60 * 60  # 1시간 캐싱 유지
 
