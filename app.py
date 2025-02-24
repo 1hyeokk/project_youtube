@@ -2,9 +2,11 @@ from flask import Flask, render_template, request
 import requests
 import os
 import time
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+load_dotenv()
 
 # GitHub JSON 데이터 URL
 owner = "RohJoonHoo"
